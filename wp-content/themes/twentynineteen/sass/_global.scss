@@ -1,0 +1,198 @@
+//<МИКСИНЫ>===============================================================================================
+@mixin tr($x,$y,$z){transform: translate3d($x, $y, $z);};
+@mixin flex() {display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;}
+@mixin flexcnt(){@include flex;align-items: center; }
+@mixin flexrow {
+  @include flex;
+  flex-wrap: wrap;
+  margin-right: -12px;
+  margin-left: -12px;
+}
+//</МИКСИНЫ>===============================================================================================
+html {
+  font-size: 10px;
+}
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily:'Open Sans', sans-serif;
+$fontfamilyiner: 'Work Sans', sans-serif;
+
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>==============================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$mw:1170;
+$minwidth:320px;
+$md1:$mw+12;
+$md2:992.98;
+$md3:767.98;
+$md4:550;
+//</ПЕРЕМЕННЫЕ>==============================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+*{
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+*,*:before,*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing:border-box;
+  box-sizing: border-box;
+}
+
+
+:focus,:active {
+  outline: none;
+}
+a:focus,a:active {
+  outline: none;
+  text-decoration: none;
+}
+aside,nav,footer,header,section {
+  display: block;
+}
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: $minwidth;
+  position: relative;
+  width: 100%;
+  color: $black;
+}
+body {
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: normal;   
+  font-family: $fontfamily;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+	&.lock{overflow: hidden;
+		@media (max-width:$md3+px){
+			width: 100%;			
+			overflow: hidden;
+		}
+	}
+}
+a,
+button,
+input {
+  transition: all 0.5s ease;
+}
+input,button,textarea {
+  font-family: $fontfamily;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding:0;
+  border:0;
+}
+a, a:visited, a:hover {
+  text-decoration: none;
+}
+a {
+  color:inherit; 
+}
+ul li {
+  list-style: none;
+}
+img {  
+  object-fit: cover;
+  max-width: 100%;
+}
+h1,h2,h3,h4,h5,h6{  
+  font-size: inherit;
+  font-weight: bold; 
+  font-family: $fontfamily;
+  line-height: 120%;
+}
+h1 {
+  font-size: 38px;
+  @media (max-width:$md3+px){
+   font-size: 32px;
+}  
+}
+
+h5 {
+  font-size: 15px;  
+}
+// buttons ==================================================
+.btn {
+   display: inline-block;	
+   border: 2px solid transparent;  
+   padding: 10px;
+   color: $white;
+   font-size: 20px;  
+   font-weight: 400;  	
+   width: 100%;
+   transition: all .3s ease;
+   letter-spacing: 0.05em;
+   text-align: center; 
+}
+.btn-red {
+  max-width: 165px;
+  background-color: $ruby-red;
+  border: 1px solid $ruby-red;
+  &:hover {
+    background-color: transparent;
+    color: $ruby-red;
+  }
+  @media (max-width:$md4+px){
+   white-space: nowrap;
+ }
+}
+.btn-more {
+  @include flexcnt;
+  background-color: transparent;
+  color: $medium-persian-blue;
+  padding-left: 15px;
+  font-weight: bold;
+  font-size: 13px;
+  font-family: $fontfamilyiner;
+  position: relative;
+  &:before{
+    content: '';
+    display: block;
+    width: 8px;
+    height: 12px;
+    background: url(../img/images/arrow-up.png) no-repeat center center/ cover;
+    position: absolute;
+    top:50%;
+    left: 0;  
+    transform: translateY(-50%);
+    transition: all .1s ease;
+  }
+  img {
+    margin-right: 10px;
+  }
+}
+.btn-more.open {
+  &:before {
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+// /buttons ==================================
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper{width: 100%;min-height: 100%;overflow: hidden;
+	&.loaded{}
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container{max-width:$mw+px;margin: 0 auto;width: 100%;padding:0 15px;
+	@media (max-width:$md1+px){max-width: 970px;}
+	@media (max-width:$md2+px){max-width: 750px;}
+	@media (max-width:$md3+px){max-width: none;padding:0 15px;}
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================

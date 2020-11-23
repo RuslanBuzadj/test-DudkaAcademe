@@ -1,0 +1,334 @@
+
+@import 'vars';
+@import 'fonts';
+@import 'global';
+// header =====================================
+.header { 
+  padding: 35px 0; 
+  background:$light-blue-gray;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(96.4deg, rgba(56, 59, 90, 0.55) -12.4%, rgba(59, 62, 91, 0.34087) 47.13%, rgba(162, 166, 202, 0.165) 108.11%);
+  }
+  &__burger {
+    display: none;
+    overflow: hidden;
+    @media (max-width: $md3+px) {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        z-index: 5;            
+        &:before,
+        &:after{
+            content: '';
+            background-color: #fff;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            transition: all .5s ease;
+        }
+        &:before {
+            top: 0;
+        }
+        &:after {
+            bottom: 0;
+        }
+        &.active:before{
+            transform: rotate(45deg);
+            top: 9px;
+        }
+        &.active:after{
+            transform: rotate(-45deg);
+            bottom: 9px;
+        }
+        &.active {
+            span {
+                transform: translateX(-35px);                   
+            }
+        }
+        span {
+            background-color: #fff;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            top: 9px;
+            transition: all .5s ease;
+        }
+    }
+   
+  }
+}
+// /header =====================================
+// nav =====================================
+.nav {   
+  @include flexcnt;
+  justify-content: space-between;
+  position: relative;
+  z-index: 100;
+  &__logo {
+    max-width: 184px;
+    @media (max-width:$md4+px){
+      max-width: 120px;    
+    }
+    
+  }
+  
+  &__menu {
+    @include flexcnt;
+    @media (max-width: $md3+px) {
+      flex-direction: column;  
+      align-items: flex-start;      
+      background-color: $white;
+      position: absolute;
+      right: -15px;
+      top: 35px;
+      opacity: 0;      
+      transform: translateX(100%);
+      transition: all .3s ease-in-out;
+      z-index: 100;                
+    }
+    li {
+      &:not(:last-child) {
+        margin-right: 30px;
+        @media (max-width: $md3+px) {
+          margin-right:0;
+        }
+      }      
+      a {
+        color: $white;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 20px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        &:hover {
+          color: $ruby-red;
+        }
+        @media (max-width: $md3+px) { 
+          display: block;
+          padding: 10px 20px;
+          color: $Granite;
+        }
+      }
+    }
+  }
+  
+  &__menu.active {      
+    transform: translateX(0);
+    opacity: 1;    
+  }
+}
+// /nav =====================================
+// offer =====================================
+.offer {
+  padding: 83px 0 103px;
+  position: relative;
+  @media (max-width:$md3+px){
+    padding: 83px 0;
+  }
+  z-index: 1;
+  &__content{
+    max-width: 667px;  
+    margin: 0 auto;
+    border-left:1px solid $white;
+    border-right: 1px solid $white; 
+    border-radius: 8px;
+    padding: 44px 0 59px;
+    text-align: center;
+    position: relative;
+  }  
+  &__title {    
+    display: flex;
+    align-items: center;
+    margin-top: -69px;
+    white-space: nowrap; 
+    @media (max-width:$md3+px){
+      margin-top: -66px;
+   }   
+   @media (max-width:$md4+px){
+    white-space: normal;
+    margin-top: -85px;
+  }
+    &:after, &:before {
+      content: '';           
+      width: 100%;
+      height: 15px;
+      border-top: 1px solid #f9f9f9;
+      margin: 0 0 -19px 0;        
+    }
+    &:after{     
+      border-top-right-radius: 8px;  
+      margin-left: 25px;
+    }  
+    &:before{    
+       border-top-left-radius: 8px; 
+       margin-right: 25px;  
+    } 
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 140.76%;
+    opacity: 0.8;
+    font-weight: 400;
+    padding: 0 100px;
+    margin: 31px 0;
+    @media (max-width:$md3+px){
+      padding: 0 20px;
+    }
+  } 
+  
+  &__btn {
+    display: flex;
+    align-items: center;
+    margin-bottom: -83px;    
+    &:after, &:before {
+      content: '';           
+      width: 100%;
+      height: 15px;
+      border-bottom: 1px solid #f9f9f9;
+      margin: -19px 0 0px 0;        
+    }
+    &:after{     
+      border-bottom-right-radius: 8px;  
+      margin-left: 25px;
+    }  
+    &:before{    
+       border-bottom-left-radius: 8px; 
+       margin-right: 25px;  
+    }
+  }
+}
+// /offer =====================================
+// cards =====================================
+.cards {
+  padding: 72px 0;
+  @media (max-width:$md3+px){
+    padding: 50px 0;
+  }
+  @media (max-width:$md4+px){
+    padding: 30px 0 10px;
+  }
+  &__row {
+    @include flexrow;
+    @media (max-width: $md1+px) {      
+      justify-content: center;
+  }
+  }
+
+  &__col {
+    padding:0 12px;
+    flex: 0 1 25%;
+    @media (max-width: $md1+px) {
+        flex: 0 1 33.333%;        
+    }
+    @media (max-width: $md2+px) {
+      flex: 0 1 50%;        
+    }
+    @media (max-width: $md4+px) {
+      flex: 0 1 100%;        
+    }
+  }
+}
+// /cards =====================================
+// card =====================================
+.card {
+  margin-bottom: 24px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all .2s ease-in;  
+  &__img {   
+    display: block;     
+    overflow: hidden;    
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    cursor: pointer; 
+    // @media (max-width: $md2+px) {
+    //   height: ;        
+    // }     
+    img {       
+      width: 100%;
+      height: 100%;     
+      transition: all .3s ease-in-out;      
+    }
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__content {
+    padding: 24px 21px;
+  }
+
+  &__title {
+    a{
+      cursor: pointer; 
+      color: $marengo;
+      line-height: 145.8%;      
+    }
+    
+  }
+
+  &__decription {
+    color: $slate-gray;
+    line-height: 129.03%;
+    margin: 8px 0 16px;
+  }
+}
+// /cards =====================================
+.more {
+  display: none;
+}
+// footer =====================================
+.footer {
+  padding: 20px 0;
+  background-color: $Granite;
+  color: $white;  
+  &__body {
+    @include flexcnt;
+    justify-content: space-between;
+  }
+
+  &__data {
+    font-size: 16px;
+  }
+  
+}
+// /footer =====================================
+// social =====================================
+.social {
+  @include flexcnt;
+  a {
+    display: flex;
+    width: 20px;
+    height:20px;
+    overflow: hidden;    
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+    &:hover {
+      transform: scale(1.2);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+// social =====================================
