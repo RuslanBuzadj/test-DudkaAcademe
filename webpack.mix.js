@@ -7,7 +7,7 @@ const resources_path = './wp-content/themes/twentynineteen/';
 mix.setPublicPath(resources_path + 'dist');
 
 // Автоподмена пути к ресурсам в cSS
-mix.setResourceRoot('/testovoe/wp-content/themes/twentynineteen/dist');
+mix.setResourceRoot('/wp-content/themes/twentynineteen/dist');
 
 // Mask - @import "blocks/**/*.scss"
 mix.webpackConfig({ module: { rules: [ { test: /\.scss$/, loader: 'import-glob-loader' }, ] } });
